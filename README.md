@@ -8,9 +8,7 @@ The Levenshtein distance is defined by the number of single-character difference
 
 # Installation
 
-Clone the repository.
-
-Create the virtual environment and activate it.
+Clone the repository, create the virtual environment and activate it.
 
 ```bash
 python -m virtualenv venv
