@@ -70,15 +70,4 @@ var.abcdefgh
 
 ## Limitations
 
-A higher distance threshold allows for more incorrect characters in the misspelled attribute. If this threshold is too high, then misspelled attributes will easily match with completely unrelated correct attributes. For example, take the following class with a high distance threshold.
-
-```python
-class MyClass(AttrCorrector, max_distance=7):
-	class_attr = 4
-	def __init__(self):
-		pass
-```
-
-If we were to try the attribute `MyClass.x`, the misspelled attribute name `x` would potentially match with `__init__`. The two are completely unrelated, so this could cause unpredictable behavior. In these cases, it is better for the spelling checker to fail to correct the attribute name, and raise an `AttributeError`. So the distance threshold should be kept to a low value.
-
-False positive corrections are also more likely to occur when the class's attributes have short names, such as `Vector.x` or `Vector.y`. Since a misspelling of `x` could have a Levenshtein distance of as little as 1 between it and another single-character name, it's impossible to prevent unintentional corrections.
+False positive corrections are more likely to occur when the distance threshold is too high, or the class's attributes have short names, such as `Vector.x` or `Vector.y`. Since a misspelling of `x` could have a Levenshtein distance of as little as 1 between it and another single-character name, it's impossible to prevent unintentional corrections.
